@@ -93,14 +93,14 @@ CFPB_proxy_methodology_comments@cfpb.gov.
 
 ---
 
-<p id="fn-1">
+<a aria-hidden="true" href="#fn-1" class="anchor" name="user-content-fn-1"><span class="octicon octicon-link"></span></a>
 <sup>1</sup>
     When referring to ZIP code demographics, we match the institution-based
     ZIP code information to ZIP Code Tabulation Areas (ZCTAs) as defined by
     the U.S. Census Bureau.
 </p>
 
-<p id="fn-2">
+<a aria-hidden="true" href="#fn-2" class="anchor" name="user-content-fn-2"><span class="octicon octicon-link"></span></a>
 <sup>2</sup>
     In the 2010 SF1, the U.S. Census Bureau produced tabulations that report
     counts of Hispanics and non-Hispanics by race.

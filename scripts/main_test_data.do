@@ -19,7 +19,7 @@ local sourcedir = "../output"
 * Identify the output directory for processing.
 local outdir = "../output"
 
-* Identify the location of the prepared input census files
+* Identify the location of the prepared input census files.
 local censusdata = "../input_files/created"
 
 * Run the script that prepares the analysis version of the census surname list,
@@ -33,14 +33,14 @@ do "create_attr_over18_all_geo_entities.do"
 * from the census surname list.
 * See script for details on arguments that need to be supplied to the program.
 do "surname_parser.do"
-* Execute name_parse
+* Execute name_parse.
 name_parse, matchvars(rownum) app_lname(name1) coapp_lname(name2) maindir(`outdir') readdir(`sourcedir') readfile(fictitious_sample_data) censusdir(`censusdata') keepvars()
 
 * Read in the file (for each level of geography) that defines the program "geo_parse" that merges the precalculated geographic 
 * and name probabilities and generates the Bayesian probability and run program.
 * See script for details on arguments that need to be supplied to the program.
 do "geo_name_merger_all_entities_over18.do"
-* Execute geo_parse to construct block group, tract, and zip code based BISG probabilities
+* Execute geo_parse to construct block group, tract, and ZIP code based BISG probabilities.
 geo_parse, matchvars(rownum) maindir(`outdir') readdir(`sourcedir') readfile(fictitious_sample_data) geodir(`sourcedir') geofile(fictitious_sample_data) inst_name(test) censusdir(`censusdata') geo_ind_name(GEOID10_BlkGrp) geo_switch(blkgrp)
 geo_parse, matchvars(rownum) maindir(`outdir') readdir(`sourcedir') readfile(fictitious_sample_data) geodir(`sourcedir') geofile(fictitious_sample_data) inst_name(test) censusdir(`censusdata') geo_ind_name(GEOID10_Tract) geo_switch(tract)
 geo_parse, matchvars(rownum) maindir(`outdir') readdir(`sourcedir') readfile(fictitious_sample_data) geodir(`sourcedir') geofile(fictitious_sample_data) inst_name(test) censusdir(`censusdata') geo_ind_name(ZCTA5) geo_switch(zip)
@@ -49,7 +49,7 @@ geo_parse, matchvars(rownum) maindir(`outdir') readdir(`sourcedir') readfile(fic
 * chooses the most precise proxy given the precision of geocoding.
 * See script for details on arguments that need to be supplied to the function.
 do "combine_probs.do"
-* Execute combine_bisg
+* Execute combine_bisg.
 combine_bisg, matchvars(rownum) maindir(`outdir') geodir(`sourcedir') geofile(fictitious_sample_data) geoprecvar(geo_code_precision) inst_name(test)
 
 

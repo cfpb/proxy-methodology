@@ -1,4 +1,4 @@
-* This program merges together the block group, tract, and zip based BISG proxies
+* This program merges together the block group, tract, and ZIP code based BISG proxies
 * and chooses the most precise proxy given the precision of geocoding.
 *
 * Input arguments:
@@ -16,7 +16,7 @@ program define combine_bisg, byable(recall)
 
 clear
  
-* Merge together the three files containing BISG proxies for blkgrp, tract, or zip.
+* Merge together the three files containing BISG proxies for blkgrp, tract, or ZIP code.
 
 * Read in BISG proxies based on block group.
 use "`maindir'/`inst_name'_proxied_blkgrp18.dta"
@@ -52,11 +52,11 @@ drop _m
 *
 * blkgrp18_pr_ is the BISG probability based on block group level demographics
 * tract18_pr_ is the BISG probability based on tract level demographics
-* zip18_pr_ is the BISG probabilitiy based on 5-digit zip code level demographics
+* zip18_pr_ is the BISG probabilitiy based on 5-digit ZIP code level demographics
 *
 * blkgrp18_geo_pr_ is the geography-only probability based on block group
 * tract18_geo_pr_ is the geography-only probability based on tract
-* zip18_geo_pr_ is the geography-only probability based on 5-digit zip code
+* zip18_geo_pr_ is the geography-only probability based on 5-digit ZIP code
 * name_pr_ is the surname-only probability 
 *
 * pr_precision reflects the level of geographic detail associated with the selection of the demographics 
@@ -89,7 +89,7 @@ foreach v in white black hispanic api aian mult_other {
     replace pr_`v'=zip18_pr_`v' if pr_precision == 5
     }
 
-* Check that final probabilities sum to 1
+* Check that final probabilities sum to 1.
 egen check_pr = rowtotal(pr_white pr_black pr_aian pr_api pr_mult_other pr_hispanic)
 di in ye "Checking final probabilities sum to 1"
 assert check_pr == 0 if pr_precision == 1 

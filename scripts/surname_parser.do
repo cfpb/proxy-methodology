@@ -1,15 +1,15 @@
-* This program is called from a external script, creates the surname list from the input data and standardizes names.
+* This program is called from an external script, creates the surname list from the input data, and standardizes names.
 *
 * Input arguments:
 *
-* matchvars() - unique record identifier.
-* app_lname() - applicant last name variable.
-* coapp_lname() -  coapplicant last name variable.
-* maindir() - output file directory.
+* matchvars() - unique record identifier
+* app_lname() - applicant last name variable
+* coapp_lname() -  coapplicant last name variable
+* maindir() - output file directory
 * readdir() - directory containing individual or application data
 * readfile() - individual or application data file name containing surname data
-* census_dir() - directory containing prepared input census geography and surname data
-* keepvars() - variables to keep from input dataset (can leave missing to keep all variables).
+* censusdir() - directory containing prepared input census geography and surname data
+* keepvars() - variables to keep from input dataset (can leave missing to keep all variables)
 
 capture program drop name_parse
 program define name_parse, byable(recall)

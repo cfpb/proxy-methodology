@@ -4,7 +4,8 @@
 * the ZIP code level demographic file does not contain tract or block group identifiers.
 * In constructing this sample data set, created solely for the purpose of illustrating how to
 * set up the proxy building code sequence, we select a random list of ZIP codes, which will
-* likely be unrelated to the tract or block groups to which they will be merged.
+* likely be unrelated to the tract or block groups to which they will be merged.  This
+* fictitious sample data cannot be used to test the accuracy of the proxy.
 
 set more off
 set type double
@@ -104,7 +105,7 @@ assert !mi(geo_code_precision)
 drop draw
 tab geo_code_precision, m
 
-* Convert geography codes and ZIP code to numeric
+* Convert geography codes and ZIP code to numeric.
 destring GEOID10_Tract GEOID10_BlkGrp ZCTA5, replace
 
 keep rownum name1 name2 GEOID10_Tract GEOID10_BlkGrp ZCTA5 geo_code_precision 

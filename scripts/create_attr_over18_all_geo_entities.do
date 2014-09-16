@@ -1,5 +1,5 @@
-* This script uses the base information from the census flat files for block group, tract, and zip code and allocates "Some Other Race"
-* to each group in proportion.  It creates three files (one each for block group, tract, and zip code) containing the geography-only
+* This script uses the base information from the census flat files for block group, tract, and ZIP code and allocates "Some Other Race"
+* to each group in proportion.  It creates three files (one each for block group, tract, and ZIP code) containing the geography-only
 * proxy as well as the proportion of population for a given race and ethnicity residing in a given geographic area, which is 
 * used to build the BISG proxy.   
 
@@ -17,10 +17,10 @@ foreach file in `geo_files'{
    use "`indir'`file'_over18_race_dec10.dta", clear
    	gen file = "`file'"
     
-* Step 1: Remove Puerto Rico from the analysis, as this population does not appear to be reflected in census surname list
+* Step 1: From the SF1, retain population counts for the contiguous U.S., Alaska, and Hawaii in order to ensure consistency with the population
+* covered by the census surname list.
     drop if State_FIPS10 == "72"
-    
-* If zip code level data, explicitly drop zip codes in Puerto Rico.
+
     if "`file'" == "zip" {
 	drop if inlist(substr(ZCTA5,1,3),"006","007","008","009")
 	}
@@ -33,7 +33,7 @@ foreach file in `geo_files'{
 * Census breaks out Asian and PI separately; since we consider them as one, we correct for this.
     replace NH_API_alone = NH_API_alone + NH_Asian_HPI + NH_Asian_HPI_Other
 
-* Replace multiracial total to account for the fact that we've suppressed the Other category.
+* Replace multiracial total to account for the fact that we have suppressed the Other category.
     replace NH_Mult_Total = NH_Mult_Total - (NH_White_Other + NH_Black_Other + NH_AIAN_Other + NH_Asian_HPI + NH_API_Other + NH_Asian_HPI_Other)
 
 * Verify the steps above by confirming that the Total Population still matches.
@@ -75,7 +75,7 @@ foreach file in `geo_files'{
     gen geo_pr_mult_other = (NH_Mult_Total) / Total_Pop
     gen geo_pr_hispanic = Hispanic_Total / Total_Pop
 
-* When updating geocoded race probabilities, we require the probability that someone of a particular race lives in that block group, tract, or zip code. 
+* When updating geocoded race probabilities, we require the probability that someone of a particular race lives in that block group, tract, or ZIP code. 
 * Our race counts are single race reported counts, therefore we divide the single race population within each block by the total single race population
 * for each group.
 

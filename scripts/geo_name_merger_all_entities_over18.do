@@ -1,15 +1,16 @@
-* This program is called from a external script and merges the name probabilities
+* This program is called from an external script and merges the name probabilities
 * and census geography data to generate the Bayesian updated probability.
 *
 * Input arguments:
 *
 * matchvars() - unique record identifier
 * maindir() - output directory
-* readfile() - loan data 
+* readdir() - directory containing individual or application data
+* readfile() - individual or application data file 
 * geodir() - input directory that contains geocoded data
 * geofile() - institution specific geocoded data
 * inst_name() - string that is use to create file name for final output dataset
-* census_dir() - directory containing prepared input census geography and surname data
+* censusdir() - directory containing prepared input census geography and surname data
 * geo_ind_name() - string that identifies the name of the geographic indicator in the loan or individual level analysis data (the program will change the name of the fips variable in the geocoded data to match this in order to merge)
 * geo_switch() - string that identifies level of geography used taking the following values: blkgrp, tract, or zip (same values as used in geo creator)
 
@@ -37,7 +38,7 @@ foreach file in `geo_switch'{
 
     merge 1:m `geo_ind_name' using "`maindir'/`inst_name'_proxied.dta", keep(match using) update replace nogen
 
-    * Now incorporate name-based probabilities
+    * Now incorporate name-based probabilities.
 
     merge 1:1 `matchvars' using "`maindir'/proxy_name.dta", keep(match master) nogen
 
@@ -45,8 +46,8 @@ foreach file in `geo_switch'{
     cap rename name_pr_2prace name_pr_mult_other
 
 * Use Bayesian updating to combine name and geo probabilities.
-* Follow the method and notation of http://www.census.gov/genealogy/www/data/2000surnames/surnames.pdf
-* u_white=P(white|name)*P(this tract|white), and so on for other races
+* Follow the method and notation in Elliott et al. (2009).
+* u_white=P(white|name)*P(this tract|white), and so on for other races.
     foreach race in white black aian api mult_other hispanic{
         gen u_`race' = name_pr_`race' * here_given_`race'
     }
@@ -80,7 +81,7 @@ di in ye "Start assertions"
         assert mi(pr_`race') | (pr_`race' >= 0 & pr_`race' <= 1)
     }
 
-* 2. Race probabilities should sum to at least 1. Note that since probabilities are for at least one person of the given race being on the application.
+* 2. Race probabilities should sum to at least 1.
     egen check_name = rowtotal(name_pr_white name_pr_black name_pr_aian name_pr_api name_pr_mult_other name_pr_hispanic)
     egen check_geo = rowtotal(geo_pr_white geo_pr_black geo_pr_aian geo_pr_api geo_pr_mult_other geo_pr_hispanic)
     egen check_pr = rowtotal(pr_white pr_black pr_aian pr_api pr_mult_other pr_hispanic)
@@ -92,7 +93,7 @@ di in ye "Start assertions"
     
 di in ye "End assertions"
 
-* Rename BISG proxy variable to reflect geography used
+* Rename BISG proxy variable to reflect geography used.
     foreach x in pr_white pr_black pr_aian pr_api pr_hispanic pr_mult_other geo_pr_white geo_pr_black geo_pr_aian geo_pr_api geo_pr_hispanic geo_pr_mult_other {
 			rename `x' `geo_switch'18_`x'
     }

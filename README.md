@@ -64,8 +64,8 @@ The user will need to change paths and define parameters as required.
    1. Census geographies:
       1. `/scripts/create_attr_over18_all_geo_entities.do`—uses the base information,
          for individuals age 18 and older, from the Census flat files for
-         block group, tract, and ZIP code[^1] and allocates "Some Other Race"
-         to each group in proportion.
+         block group, tract, and ZIP code[<sup>1</sup>](#fn-1) and allocates
+         "Some Other Race"[<sup>2</sup>](#fn-2) to each group in proportion.
          It creates three files (one each for block group, tract, and ZIP code)
          with geo probabilities for use in proxy:
          1. `/input_files/created/blkgrp_attr_over18.dta`
@@ -89,16 +89,19 @@ The user will need to change paths and define parameters as required.
       1. ```/`maindir'/`inst_name'_`file'proxied_final.dta```
 
 Please direct all questions, comments, and suggestions to:
-<CFPB_proxy_methodology_comments@cfpb.gov>.
+CFPB_proxy_methodology_comments@cfpb.gov.
 
 ---
 
-[^1]:
+<p id="fn-1">
+<sup>1</sup>
     When referring to ZIP code demographics, we match the institution-based
     ZIP code information to ZIP Code Tabulation Areas (ZCTAs) as defined by
     the U.S. Census Bureau.
+</p>
 
-[^2]:
+<p id="fn-2">
+<sup>2</sup>
     In the 2010 SF1, the U.S. Census Bureau produced tabulations that report
     counts of Hispanics and non-Hispanics by race.
     These tabulations include a “Some Other Race” category.
@@ -106,3 +109,4 @@ Please direct all questions, comments, and suggestions to:
     race and ethnicity categories using an Iterative Proportional Fitting
     procedure to make geography based demographic categories consistent with
     those on the census surname list.
+</p>

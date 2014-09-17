@@ -13,9 +13,8 @@ OR and SEFL use, although we may alter this methodology in particular analyses,
 depending on the circumstances involved.
 In addition, the proxy method may be revised as we become aware of enhancements
 that would increase accuracy and performance.
-For more details, see “Using Publicly Available Information to Proxy for
-Unidentified Race and Ethnicity: A Methodology and Assessment”
-available at: [insert link to paper].
+For more details, see [“Using Publicly Available Information to Proxy for
+Unidentified Race and Ethnicity: A Methodology and Assessment”][paper].
 
 Included are a series of Stata scripts and subroutines that prepare the
 publicly available census geography and surname data and that construct the
@@ -72,8 +71,8 @@ The user will need to change paths and define parameters as required.
          1. `/input_files/created/tract_attr_over18.dta`
          1. `/input_files/created/zip_attr_over18.dta`
 1. Calculate the BISG probabilities following the methodology described in
-   “Using Publicly Available Information to Proxy for Unidentified Race and Ethnicity:
-   A Methodology and Assessment” available at [insert link to paper].
+   [“Using Publicly Available Information to Proxy for Unidentified Race and Ethnicity:
+   A Methodology and Assessment”][paper].
    1. `/scripts/geo_name_merger_all_entities_over18.do`—this program
       creates three files (one each for block group, tract, and ZIP code)
       with BISG probabilities in user-defined directory:
@@ -110,3 +109,5 @@ CFPB_proxy_methodology_comments@cfpb.gov.
     procedure to make geography based demographic categories consistent with
     those on the census surname list.
 </p>
+
+[paper]: http://www.consumerfinance.gov/reports/using-publicly-available-information-to-proxy-for-unidentified-race-and-ethnicity/

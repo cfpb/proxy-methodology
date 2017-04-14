@@ -7,9 +7,32 @@ set more off
 set type double
 
 * Input files are included in input_files subfolder.
-insheet using "../input_files/app_c.csv", comma clear
 
+* Import 2010 surname data.
+insheet using "../input_files/Names_2010Census.csv", comma clear
 replace name = trim(proper(name))
+gen list_year = 2010
+
+tempfile surnames_2010
+save `surnames_2010', replace
+
+* Import 2000 surname data.
+insheet using "../input_files/app_c.csv", comma clear
+replace name = trim(proper(name))
+gen list_year = 2000
+
+tempfile surnames_2000
+save `surnames_2000', replace
+
+* Append 2000 data to 2010 data.
+use `surnames_2010', clear
+append using `surnames_2000'
+
+* Create a flag where there are duplicates within a name.
+bysort name : gen multiple_flag = _N > 1
+
+* If there are duplicates, drop the entry from 2000.
+drop if multiple_flag == 1 & list_year == 2000
 
 * Formats the values in the Census data as proportions.
 foreach k in white black api aian 2prace hispanic {

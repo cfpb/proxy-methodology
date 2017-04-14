@@ -24,7 +24,7 @@ identifiable personal information or other confidential information,
 such as confidential supervisory information.
 
 Please note that all scripts and subroutines are written for execution in
-STATA 12 on a Linux platform and may need to be modified for other environments.
+Stata 12 on a Linux platform and may need to be modified for other environments.
 Users must define a number of parameters, including file paths and arguments for subroutines.
 The scripts that define the subroutines also identify and describe arguments, as required.
 
@@ -56,10 +56,10 @@ The user will need to change paths and define parameters as required.
          1. `/input_files/created/census_surnames_lower.dta`
       1. In order to prepare the user-defined datasets for use with the Census surname list,
          basic cleaning of surnames using regular expressions and other forms of
-         name standardization is reguired.
+         name standardization is required.
          This script exists at: `/scripts/surname_parser.do`.
          File created by `surname_parser.do` in user-defined directory:
-         1. ````dir'/proxy_name.dta````
+         1. ``` `dir'/proxy_name.dta ```
    1. Census geographies:
       1. `/scripts/create_attr_over18_all_geo_entities.do`—uses the base information,
          for individuals age 18 and older, from the Census flat files for
@@ -97,7 +97,6 @@ CFPB_proxy_methodology_comments@cfpb.gov.
     When referring to ZIP code demographics, we match the institution-based
     ZIP code information to ZIP Code Tabulation Areas (ZCTAs) as defined by
     the U.S. Census Bureau.
-</p>
 
 <a aria-hidden="true" href="#fn-2" class="anchor" name="user-content-fn-2"><span class="octicon octicon-link"></span></a>
 <sup>2</sup>
@@ -108,6 +107,97 @@ CFPB_proxy_methodology_comments@cfpb.gov.
     race and ethnicity categories using an Iterative Proportional Fitting
     procedure to make geography based demographic categories consistent with
     those on the census surname list.
-</p>
+
+
+---
+
+## Update to proxy methodology – April 2017
+
+In the summer 2014 edition of _Supervisory Highlights_,[<sup>3</sup>](#fn-3)
+the Bureau previously reported that examination teams use a
+Bayesian Improved Surname Geocoding (BISG) proxy methodology for race and
+ethnicity in their fair lending analysis of non-mortgage credit products.
+The BISG methodology relies on the distribution of race and ethnicity based on
+place-of-residence and surname, which are publicly available information from
+Census. The method involves constructing a probability of assignment to race
+and ethnicity based on demographic information associated with surname and then
+updating this probability using the demographic characteristics of the census
+block group associated with place of residence. The updating is performed
+through the application of a Bayesian algorithm, which yields an integrated
+probability that can be used to proxy for an individual’s race and
+ethnicity.[<sup>4</sup>](#fn-4)
+
+Through March of 2017, examination teams had relied on the surname list derived
+from the 2000 Decennial Census of the Population in their construction of the
+BISG proxy for race and ethnicity.[<sup>5</sup>](#fn-5) In December 2016, the
+U.S. Census Bureau released a list of the most frequently occurring surnames
+based on data derived from 2010 Decennial Census of the Population. The updated
+2010 list generally uses the same definitions and formats as the list based on
+the 2000 Census but includes updated values for total counts and race and
+ethnicity shares associated with each surname.[<sup>6</sup>](#fn-6) In total,
+the new surname list provides information on the 162,253 surnames that appear
+at least 100 times in the 2010 Census, covering approximately 90% of the
+population.[<sup>7</sup>](#fn-7) While 146,516 names appear on both the 2000
+and 2010 surname lists, the 2010 list contains 15,737 names that do not appear
+on the 2000 list, whereas the 2000 list contains 5,155 names that do not appear
+on the 2010 list.[<sup>8</sup>](#fn-8)
+
+As of April 2017, examination teams are relying on an updated proxy methodology
+that reflects the newly available surname data from the Census Bureau. Our
+updated proxy methodology relies on the race and ethnicity shares for the
+162,253 names that appear on the 2010 list and supplements this list with the
+race and ethnicity shares for the 5,155 names that appear on the 2000 list but
+not on the 2010 list, resulting in a list of 167,409 surnames in
+total.[<sup>9</sup>](#fn-9)
+
+The updated name list, statistical software code written in Stata, and other
+publicly available data used to build the BISG proxy are now available
+in this repository.
+
+Please direct all questions, comments, and suggestions to:
+CFPB_proxy_methodology_comments@cfpb.gov.
+
+---
+
+<a aria-hidden="true" href="#fn-3" class="anchor" name="user-content-fn-3"><span class="octicon octicon-link"></span></a>
+<sup>3</sup>
+    See Consumer Financial Protection Bureau,
+    [_Supervisory Highlights: Summer 2014_](http://files.consumerfinance.gov/f/201409_cfpb_supervisory-highlights_auto-lending_summer-2014.pdf)
+    (Sept. 17, 2014).  
+
+<a aria-hidden="true" href="#fn-4" class="anchor" name="user-content-fn-4"><span class="octicon octicon-link"></span></a>
+<sup>4</sup>
+    For more information on the methodology, see Consumer Financial Protection Bureau,
+    [_Using publicly available information to proxy for unidentified race and ethnicity_](paper)
+    (Sept. 2014).
+
+<a aria-hidden="true" href="#fn-5" class="anchor" name="user-content-fn-5"><span class="octicon octicon-link"></span></a>
+<sup>5</sup>
+    See _id_.
+
+<a aria-hidden="true" href="#fn-6" class="anchor" name="user-content-fn-6"><span class="octicon octicon-link"></span></a>
+<sup>6</sup>
+    For more details on the updated 2010 surname list, including revisions to
+    the 2000 methodology and programming, see Joshua Comenetz,
+    [_Frequently Occurring Surnames in the 2010 Census_](http://www2.census.gov/topics/genealogy/2010surnames/surnames.pdf)
+    (Oct. 2016).
+
+<a aria-hidden="true" href="#fn-7" class="anchor" name="user-content-fn-7"><span class="octicon octicon-link"></span></a>
+<sup>7</sup>
+    The surname data are available on the Census Bureau’s website, see
+    [_Frequently Occurring Surnames from the 2010 Census_](https://www.census.gov/topics/population/genealogy/data/2010_surnames.html)
+    (last revised Dec. 27, 2016).
+
+<a aria-hidden="true" href="#fn-8" class="anchor" name="user-content-fn-8"><span class="octicon octicon-link"></span></a>
+<sup>8</sup>
+    Names must appear at least 100 times in the 2010 Decennial Census
+    in order to be included on the surname list.
+
+<a aria-hidden="true" href="#fn-9" class="anchor" name="user-content-fn-9"><span class="octicon octicon-link"></span></a>
+<sup>9</sup>
+    Although these names are not on the 2010 list, and thus likely no longer
+    meet the 100-name threshold, we chose to include them so as to incorporate
+    as much available surname information as possible into the proxy.
+
 
 [paper]: http://www.consumerfinance.gov/reports/using-publicly-available-information-to-proxy-for-unidentified-race-and-ethnicity/

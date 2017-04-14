@@ -93,15 +93,17 @@ foreach k in jr sr ii iii iv dds md phd {
     replace lname = subinstr(lname," `k' "," ",.)
     }
 
-* Any lone letters in lname are most likely initials (in most cases, middle initials); remove them.
+* Any lone letters in lname are most likely initials (in most cases, middle initials); remove them unless they are the letters "o" or "d".
 gen regexremaining = 1
 local anyremaining = 1
 while `anyremaining' == 1{
-    replace lname = regexr(lname," [a-z] ","") if regexremaining == 1
-    replace regexremaining = regexm(lname," [a-z] ") if regexremaining == 1
+    replace lname = regexr(lname," [a-ce-np-z] ","") if regexremaining == 1
+    replace regexremaining = regexm(lname," [a-ce-np-z] ") if regexremaining == 1
     sum regexremaining, meanonly
     local anyremaining = r(max)
     }
+* Clean up lone letters "o" or "d".
+   replace lname = "" if strtrim(lname) == "o" | strtrim(lname) == "d"
 drop regexremaining
 
 * Remove all spaces.

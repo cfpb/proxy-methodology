@@ -226,7 +226,6 @@ CFPB_proxy_methodology_comments@cfpb.gov.
 <a aria-hidden="true" href="#fn-11" class="anchor" name="user-content-fn-11"><span class="octicon octicon-link"></span></a>
 <sup>10</sup>
      See
-    [2020 DHC Table P11](https://data.census.gov/table?q=p11&g=010XX00US$1500000&y=2020&d=DEC%20Demographic%20and%20Housing%20Characteristics)
-    (last revised Sep. 27, 2023).
+    [2020 DHC Table P11](https://data.census.gov/table?q=p11&g=010XX00US$1500000&y=2020&d=DEC%20Demographic%20and%20Housing%20Characteristics).
 
 [paper]: http://www.consumerfinance.gov/reports/using-publicly-available-information-to-proxy-for-unidentified-race-and-ethnicity/

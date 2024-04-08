@@ -220,7 +220,7 @@ CFPB_proxy_methodology_comments@cfpb.gov.
 <a aria-hidden="true" href="#fn-10" class="anchor" name="user-content-fn-10"><span class="octicon octicon-link"></span></a>
 <sup>10</sup>
      See
-    [_2020 Census Demographic and Housing Characteristics File (DHC)s_](https://www.census.gov/data/tables/2023/dec/2020-census-dhc.html)
+    [2020 Census Demographic and Housing Characteristics File (DHC)s](https://www.census.gov/data/tables/2023/dec/2020-census-dhc.html)
     (last revised Sep. 27, 2023).
 
 <a aria-hidden="true" href="#fn-11" class="anchor" name="user-content-fn-11"><span class="octicon octicon-link"></span></a>

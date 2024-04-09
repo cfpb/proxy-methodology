@@ -168,9 +168,10 @@ new demographic data is derived from the 2020 Census Demographic and Housing Cha
 the Block Group, Census Tract, and Zip Code level through the Census API.[<sup>11</sup>](#fn-11)
 This product uses the Census Bureau Data API but is not endorsed or certified by the Census Bureau.
 
-The updated demographic data is now available in this repository. Modified versions of the BISG proxy code,
-using the new 2020 demographic data, are also now available in this repository. These code files are written
-in the statistical software code Stata.
+The updated demographic data and modified versions of the BISG proxy code using the new 2020 demographic
+data are all now available in the 2024-update folder in this repository.  The repository also continues
+to contain all of the previous code and data for users who would prefer to continue to generate proxies
+using the 2010 demographic data.
 
 Please direct all questions, comments, and suggestions to:
 CFPB_proxy_methodology_comments@cfpb.gov.

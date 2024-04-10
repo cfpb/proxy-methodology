@@ -8,7 +8,7 @@ We follow the [Semantic Versioning 2.0.0](http://semver.org/) format.
 
 ### Changed
 - Updated "create_attr_over18_all_geo_entities" script to use
-  2020 Census data instead of 2020 Census data and saves created 
+  2020 Census data instead of 2010 Census data and saves created 
   attribute files with "jan20" in file name
 - Update the file that merges name and geographic probabilities
   and the file that combines all probabilities to use 2020 files and 

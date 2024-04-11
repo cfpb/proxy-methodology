@@ -159,6 +159,25 @@ CFPB_proxy_methodology_comments@cfpb.gov.
 
 ---
 
+## Update to proxy methodology – April 2024
+
+As of April 2024, examination teams performing fair lending analysis 
+are relying on the newly available demographic data from the Census Bureau. The
+new demographic data is derived from the 2020 Census Demographic and Housing Characteristic
+(DHC) Files.[<sup>10</sup>](#fn-10) To derive the new demographic files, the Bureau pulled DHC Table P11 at 
+the Block Group, Census Tract, and Zip Code level through the Census API.[<sup>11</sup>](#fn-11)
+This product uses the Census Bureau Data API but is not endorsed or certified by the Census Bureau.
+
+The updated demographic data and modified versions of the BISG proxy code using the new 2020 demographic
+data are all now available in the 2024-update folder in this repository.  The repository also continues
+to contain all of the previous code and data for users who would prefer to continue to generate proxies
+using the 2010 demographic data.
+
+Please direct all questions, comments, and suggestions to:
+CFPB_proxy_methodology_comments@cfpb.gov.
+
+---
+
 <a aria-hidden="true" href="#fn-3" class="anchor" name="user-content-fn-3"><span class="octicon octicon-link"></span></a>
 <sup>3</sup>
     See Consumer Financial Protection Bureau,
@@ -199,5 +218,15 @@ CFPB_proxy_methodology_comments@cfpb.gov.
     meet the 100-name threshold, we chose to include them so as to incorporate
     as much available surname information as possible into the proxy.
 
+<a aria-hidden="true" href="#fn-10" class="anchor" name="user-content-fn-10"><span class="octicon octicon-link"></span></a>
+<sup>10</sup>
+     See
+    [2020 Census Demographic and Housing Characteristics File (DHC)](https://www.census.gov/data/tables/2023/dec/2020-census-dhc.html)
+    (last revised Sep. 27, 2023).
+
+<a aria-hidden="true" href="#fn-11" class="anchor" name="user-content-fn-11"><span class="octicon octicon-link"></span></a>
+<sup>11</sup>
+     See
+    [2020 DHC Table P11](https://data.census.gov/table?q=p11&g=010XX00US$1500000&y=2020&d=DEC%20Demographic%20and%20Housing%20Characteristics).
 
 [paper]: http://www.consumerfinance.gov/reports/using-publicly-available-information-to-proxy-for-unidentified-race-and-ethnicity/
